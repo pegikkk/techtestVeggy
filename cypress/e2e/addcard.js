@@ -1,20 +1,20 @@
 describe('', () => {
-
+  var phonenumber = 81916027805
+  var otpinput = 1234
 
   it('A customer adds a credit card to their account', () => {
     cy.visit('/')
     cy.viewport(390,844)
-    cy.get('.css-ycd3nx > .MuiBottomNavigationAction-label').click()
-    cy.get('#phone-number-input').type(81916027805,{force:true})
-    cy.get('#next-signup-login-button').click({force:true})
-    cy.get('.modal-body')
-    cy.get('#otp-input').type(1234)
-    cy.get('#submit-signup-login-button').click()
-    cy.get('[tabindex="4"]').should('have.text', 'PROFILE');
+    cy.login(phonenumber, otpinput)
+    cy.wait(5000)
     cy.get('[tabindex="4"]').click()
+    cy.wait(5000)
     cy.get('[href="#/profile/payment-method"] > .background-theme > [style="text-align: center;"] > div').click({force:true})
     cy.get('#mui-6').click()
     cy.get('.MuiDialog-container > .MuiPaper-root')
     cy.get('.MuiDialogActions-root > .MuiButton-contained').click()
+    cy.wait(10000)
+    cy.get("iframe").eq(0).iframe().get("iframe").eq(0).iframe().find("iframe").eq(0).iframe().find('input').type(80001612023)
+    cy.get("iframe").eq(0).iframe().get("iframe").eq(0).iframe().find("#card-button").click();
   })
 })
